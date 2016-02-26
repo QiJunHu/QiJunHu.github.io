@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-26T13:15:22.971Z</updated>
+  <updated>2016-02-26T16:04:18.038Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/02/25/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
     <id>http://yoursite.com/2016/02/25/新的开始/</id>
     <published>2016-02-25T04:47:50.000Z</published>
-    <updated>2016-02-26T13:15:22.971Z</updated>
+    <updated>2016-02-26T16:04:18.038Z</updated>
     
     <content type="html">&lt;p&gt;迁移到独立的个人博客花了点时间，新博客的第一篇文章准备学习与总结下MarkDown，一方面是博客本身就是托管在有浓厚MarkDown氛围的GitHub上，另一方面MarkDown 确实非常优秀！&lt;/p&gt;
 &lt;p&gt;(●’◡’●)这篇文章本身也是用MarkDown写的！&lt;/p&gt;
@@ -101,7 +101,7 @@
     
     </summary>
     
-      <category term="生成力工具" scheme="http://yoursite.com/categories/%E7%94%9F%E6%88%90%E5%8A%9B%E5%B7%A5%E5%85%B7/"/>
+      <category term="生产力工具" scheme="http://yoursite.com/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="MarkDown" scheme="http://yoursite.com/tags/MarkDown/"/>
