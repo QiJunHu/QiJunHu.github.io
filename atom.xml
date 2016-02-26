@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>他来了又走了</title>
+  <subtitle>风记录的痕迹</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-02-26T13:15:22.971Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>胡琪俊</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新的开始---MarkDown初体验</title>
+    <link href="http://yoursite.com/2016/02/25/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/"/>
+    <id>http://yoursite.com/2016/02/25/新的开始/</id>
+    <published>2016-02-25T04:47:50.000Z</published>
+    <updated>2016-02-26T13:15:22.971Z</updated>
+    
+    <content type="html">&lt;p&gt;迁移到独立的个人博客花了点时间，新博客的第一篇文章准备学习与总结下MarkDown，一方面是博客本身就是托管在有浓厚MarkDown氛围的GitHub上，另一方面MarkDown 确实非常优秀！&lt;/p&gt;
+&lt;p&gt;(●’◡’●)这篇文章本身也是用MarkDown写的！&lt;/p&gt;
+&lt;h3 id=&quot;一-认识MarkDown&quot;&gt;&lt;a href=&quot;#一-认识MarkDown&quot; class=&quot;headerlink&quot; title=&quot;一 认识MarkDown&quot;&gt;&lt;/a&gt;一 认识MarkDown&lt;/h3&gt;&lt;p&gt;Markdown 是一种用来写作的轻量级「标记语言」，它用简洁的语法代替排版，而不像一般我们用的字处理软件 Word 或 Pages 有大量的排版、字体设置。它使我们专心于码字，用「标记」语法，来代替常见的排版格式。例如此文从内容到格式，甚至插图，键盘就可以通通搞定了。&lt;/p&gt;
+&lt;h4 id=&quot;MarkDown官方文档&quot;&gt;&lt;a href=&quot;#MarkDown官方文档&quot; class=&quot;headerlink&quot; title=&quot;MarkDown官方文档&quot;&gt;&lt;/a&gt;MarkDown官方文档&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;这里可以看到 MarkDown 的官方文档，是学习MarkDown最权威的资料&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;创始人 John Gruber 的 Markdown 语法说明&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.markdown.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MarkDown中文网&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;使用-MarkDown-的优点&quot;&gt;&lt;a href=&quot;#使用-MarkDown-的优点&quot; class=&quot;headerlink&quot; title=&quot;使用 MarkDown 的优点&quot;&gt;&lt;/a&gt;使用 MarkDown 的优点&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;专注为文档内容，而不是排版&lt;/li&gt;
+&lt;li&gt;轻松的导出HTML，PDF和本身的.md格式&lt;/li&gt;
+&lt;li&gt;纯文本内容，只需要任何一种编辑器就可以使用起来&lt;/li&gt;
+&lt;li&gt;写博客也像Coding一样爽，特别是对Coder来说&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;使用什么工具&quot;&gt;&lt;a href=&quot;#使用什么工具&quot; class=&quot;headerlink&quot; title=&quot;使用什么工具&quot;&gt;&lt;/a&gt;使用什么工具&lt;/h4&gt;&lt;p&gt;虽然MarkDown 对于工具几乎没有什么要求，任何一款编辑器（即使是TXT的NotePad)都可以用来写MarKDown ,但无疑一款好的编辑器可以显著的提升效率，让你用的飞起来。&lt;/p&gt;
+&lt;p&gt;本人在Windows 平台上使用的是MarkdownPad2 ,可以实时预览非常不错。 MarkPad 也不错，GUI比MarkdownPad2 做的好，比Markdownpad 界面漂亮多了，不过就是安装这块做的很糟糕。&lt;/p&gt;
+&lt;p&gt;这里附上两个工具的链接：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://markdownpad.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdownpad2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://code52.org/DownmarkerWPF/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MarkPad&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;二-MarkDown-简要语法&quot;&gt;&lt;a href=&quot;#二-MarkDown-简要语法&quot; class=&quot;headerlink&quot; title=&quot;二 MarkDown 简要语法&quot;&gt;&lt;/a&gt;二 MarkDown 简要语法&lt;/h3&gt;&lt;h4 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h4&gt;&lt;p&gt;MarkDown 使用# 符号来标识是否为标题，如果一段文字被定义为标题，则只需要在这段文字之前加上# 符号即可&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;&lt;h3 id=&quot;三级标题&quot;&gt;&lt;a href=&quot;#三级标题&quot; class=&quot;headerlink&quot; title=&quot;三级标题&quot;&gt;&lt;/a&gt;三级标题&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;p&gt;以此类推，总共六级标题，建议在井号后加一个空格，这是最标准的 Markdown 语法。&lt;/p&gt;
+&lt;h4 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h4&gt;&lt;p&gt;MarkDown中有无序和有序两种列表。无序列表使用星号，加号或是减号作为标记：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Red&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Green&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Blue&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有序列表使用数字加一个英文句号作为标记：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Red&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Green&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Blue&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;引用&quot;&gt;&lt;a href=&quot;#引用&quot; class=&quot;headerlink&quot; title=&quot;引用&quot;&gt;&lt;/a&gt;引用&lt;/h4&gt;&lt;p&gt;如果你需要引用一小段别处的句子，那么就要用引用的格式。&lt;br&gt;MarkDown 中，如果一段文字之前加上&amp;gt; 标识引用，例如：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;引用的例子&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;图片与链接&quot;&gt;&lt;a href=&quot;#图片与链接&quot; class=&quot;headerlink&quot; title=&quot;图片与链接&quot;&gt;&lt;/a&gt;图片与链接&lt;/h4&gt;&lt;p&gt;插入链接与插入图片的语法很像，区别在一个 !号&lt;/p&gt;
+&lt;p&gt;图片为：&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;{ImgCap}{/ImgCap}.&lt;/p&gt;
+&lt;p&gt;链接为： &lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;插入图片的地址需要图床，这里推荐围&lt;a href=&quot;http://weibotuchuang.sinaapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;脖图床修复计划&lt;/a&gt; 与 &lt;a href=&quot;https://www.getcloudapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CloudApp&lt;/a&gt; 的服务，生成URL地址即可。&lt;/p&gt;
+&lt;h4 id=&quot;粗体与斜体&quot;&gt;&lt;a href=&quot;#粗体与斜体&quot; class=&quot;headerlink&quot; title=&quot;粗体与斜体&quot;&gt;&lt;/a&gt;粗体与斜体&lt;/h4&gt;&lt;p&gt;Markdown 的粗体和斜体也非常简单，用两个 &lt;em&gt; 包含一段文本就是粗体的语法，用一个 &lt;/em&gt; 包含一段文本就是斜体的语法。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;这里是粗体&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt; &lt;em&gt;这里是斜体&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;代码框&quot;&gt;&lt;a href=&quot;#代码框&quot; class=&quot;headerlink&quot; title=&quot;代码框&quot;&gt;&lt;/a&gt;代码框&lt;/h4&gt;&lt;p&gt;程序猿的福音，当你需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来，例如下面这段简单的Hello Word.&lt;/p&gt;
+&lt;h5 id=&quot;C&quot;&gt;&lt;a href=&quot;#C&quot; class=&quot;headerlink&quot; title=&quot;C++&quot;&gt;&lt;/a&gt;C++&lt;/h5&gt;&lt;p&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;int main()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;{&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;std::cout&amp;lt;&amp;lt;&amp;quot;Hello World&amp;quot;&amp;lt;&amp;lt;std::endl;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;return 0;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;}&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&quot;Python&quot;&gt;&lt;a href=&quot;#Python&quot; class=&quot;headerlink&quot; title=&quot;Python&quot;&gt;&lt;/a&gt;Python&lt;/h5&gt;&lt;p&gt;&lt;code&gt;print(&amp;#39;Hello World)&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;分割线&quot;&gt;&lt;a href=&quot;#分割线&quot; class=&quot;headerlink&quot; title=&quot;分割线&quot;&gt;&lt;/a&gt;分割线&lt;/h4&gt;&lt;p&gt;分割线的语法只需要三个 * 号，例如：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;三-后记&quot;&gt;&lt;a href=&quot;#三-后记&quot; class=&quot;headerlink&quot; title=&quot;三 后记&quot;&gt;&lt;/a&gt;三 后记&lt;/h4&gt;&lt;p&gt;好了，到这里MarkDown的基本语法就足够在日常中使用了，遇到问题再去查MarkDown 的语法就可以了。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;迁移到独立的个人博客花了点时间，新博客的第一篇文章准备学习与总结下MarkDown，一方面是博客本身就是托管在有浓厚MarkDown氛围的GitHub上，另一方面MarkDown 确实非常优秀！&lt;/p&gt;
+&lt;p&gt;(●’◡’●)这篇文章本身也是用MarkDown写的！&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="生成力工具" scheme="http://yoursite.com/categories/%E7%94%9F%E6%88%90%E5%8A%9B%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="MarkDown" scheme="http://yoursite.com/tags/MarkDown/"/>
+    
+  </entry>
+  
+</feed>
