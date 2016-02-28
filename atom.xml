@@ -47,7 +47,7 @@
     <link href="http://yoursite.com/2016/02/27/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
     <id>http://yoursite.com/2016/02/27/科学上网/</id>
     <published>2016-02-27T14:03:51.000Z</published>
-    <updated>2016-02-27T14:45:56.828Z</updated>
+    <updated>2016-02-28T05:52:30.214Z</updated>
     
     <content type="html">&lt;h3 id=&quot;一，原理&quot;&gt;&lt;a href=&quot;#一，原理&quot; class=&quot;headerlink&quot; title=&quot;一，原理&quot;&gt;&lt;/a&gt;一，原理&lt;/h3&gt;&lt;p&gt;  科学上网，相信大家都明白是什么意思！&lt;br&gt;网上各种免费或者付费的VPN代理工具其原理大致一样：通过一台可以连接到墙外的服务器中转（代理）。本地PC和代理服务器网络是相通的，代理服务器和墙外（google.com等）是相通的， 故通过代理可以实现翻墙的目的，成功访问google.com&lt;/p&gt;
 &lt;h3 id=&quot;二，搭建步骤&quot;&gt;&lt;a href=&quot;#二，搭建步骤&quot; class=&quot;headerlink&quot; title=&quot;二，搭建步骤&quot;&gt;&lt;/a&gt;二，搭建步骤&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;1 准备一个海外的VPS，美国或者香港或者日本的机房都可以&lt;/strong&gt;&lt;br&gt;   我本人使用的是&lt;a href=&quot;https://bandwagonhost.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搬瓦工&lt;/a&gt; 洛杉矶的机房，国内延时200ms ,选的20$ 一年的套餐。&lt;br&gt;   &lt;em&gt;搬瓦工的使用教程可以百度，网络上非常多，可以参&lt;/em&gt;&lt;a href=&quot;http://banwagong.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;考板瓦工中文网&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
@@ -65,6 +65,10 @@
 &lt;p&gt;在任务栏找到 Shadowsocks 图标&lt;br&gt;在 服务器 菜单添加多个服务器&lt;br&gt;选择 启用系统代理 来启用系统代理。请禁用浏览器里的代理插件，或把它们设置为使用系统代理。&lt;br&gt;除了设为系统代理，你也可以直接自己配置浏览器代理。在 SwitchyOmega 中把代理设置为 SOCKS5 或 HTTP 的 127.0.0.1:1080。这个 1080 端口可以在服务器设置中设置。&lt;/p&gt;
 &lt;p&gt;然后打开浏览器，就可以愉快的访问google.com 等网站了&lt;/p&gt;
 &lt;h3 id=&quot;三，小结&quot;&gt;&lt;a href=&quot;#三，小结&quot; class=&quot;headerlink&quot; title=&quot;三，小结&quot;&gt;&lt;/a&gt;三，小结&lt;/h3&gt;&lt;p&gt;由于党国的国情， 这种事情不能写的太细。 不过使用搬瓦工VPS+shadowsocks 还是能非常快速的搭建自己的VPN，实现科学上网的目的。&lt;/p&gt;
+&lt;h3 id=&quot;四，更多资料&quot;&gt;&lt;a href=&quot;#四，更多资料&quot; class=&quot;headerlink&quot; title=&quot;四，更多资料&quot;&gt;&lt;/a&gt;四，更多资料&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://program-think.blogspot.com/2009/05/how-to-break-through-gfw.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;编程随想&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://fanqianghou.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;墙外是什么&lt;/em&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </content>
     
     <summary type="html">

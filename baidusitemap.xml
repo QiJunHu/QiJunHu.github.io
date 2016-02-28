@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2016/02/27/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
+    <lastmod>2016-02-28T05:52:30.214Z</lastmod>
+    <data>
+        <display>
+        <title>科学上网--使用VPS搭建自己的VPN</title>
+        <pubTime>2016-02-27T14:03:51.000Z</pubTime>
+        
+        <tag>VPN 科学上网</tag>
+         
+         
+           
+             
+              <breadCrumb title="生产力工具" url="http://yoursite.com/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2016/02/28/%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%E7%9B%96%E8%8C%A8%E6%AF%94/</loc>
     <lastmod>2016-02-28T05:06:40.171Z</lastmod>
     <data>
@@ -17,26 +37,6 @@
            
              
               <breadCrumb title="阅读" url="http://yoursite.com/categories/%E9%98%85%E8%AF%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2016/02/27/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
-    <lastmod>2016-02-27T14:45:56.828Z</lastmod>
-    <data>
-        <display>
-        <title>科学上网--使用VPS搭建自己的VPN</title>
-        <pubTime>2016-02-27T14:03:51.000Z</pubTime>
-        
-        <tag>VPN 科学上网</tag>
-         
-         
-           
-             
-              <breadCrumb title="生产力工具" url="http://yoursite.com/categories/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
