@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-02-28T07:30:16.653Z</updated>
+  <updated>2016-03-23T16:00:36.443Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TinySTL设计与实现</title>
+    <link href="http://yoursite.com/2016/03/23/TinySTL%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2016/03/23/TinySTL设计与实现/</id>
+    <published>2016-03-23T15:38:55.000Z</published>
+    <updated>2016-03-23T16:00:36.443Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;学习和理解template 和STL 的最好方式就是自己用template 造一个STL(俗称&lt;em&gt;造轮子&lt;/em&gt;)，然后不断对比自己版本的STL与标准版本的STL(sgi STL 或者其它版本），不断重构自己的版本，使自己的版本达到或者超过标准库版本。&lt;/p&gt;
+&lt;h2 id=&quot;计划&quot;&gt;&lt;a href=&quot;#计划&quot; class=&quot;headerlink&quot; title=&quot;计划&quot;&gt;&lt;/a&gt;计划&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;实现Containers Library （中的一种或几种）&lt;/li&gt;
+&lt;li&gt;实现Algorithms Library  （中的一种或几种）&lt;/li&gt;
+&lt;li&gt;实现String Library ，并替换前面实现部分中的std::string （如果有使用到）为自己的版本；&lt;/li&gt;
+&lt;li&gt;编译为dll/lib/so 文件，供自己他人使用&lt;/li&gt;
+&lt;li&gt;引入Google Test 框架，完善测试代码，注释，不断重构，提升自己实现版本性能（达到或超过标准库）；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;接口实现尽量与标准库保持一致，参考&lt;a href=&quot;http://en.cppreference.com/w/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cppreference&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由于工作的原因，投入的时间不固定，所以TinySTL的设计与实现会是一个相对比较长期的过程。&lt;/p&gt;
+&lt;p&gt;在实现过程中会通过一系列文章总结，分享自己在实现中遇到的各种问题，各种坑。&lt;/p&gt;
+&lt;h2 id=&quot;项目地址&quot;&gt;&lt;a href=&quot;#项目地址&quot; class=&quot;headerlink&quot; title=&quot;项目地址&quot;&gt;&lt;/a&gt;项目地址&lt;/h2&gt;&lt;p&gt;   &lt;a href=&quot;https://github.com/geekhuqijun/TinySTL&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;进度&quot;&gt;&lt;a href=&quot;#进度&quot; class=&quot;headerlink&quot; title=&quot;进度&quot;&gt;&lt;/a&gt;进度&lt;/h2&gt;&lt;p&gt;tiny::vector 接近于完成~~~~&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;学习和理解template 和STL 的最好方式就是自己用template 造一个STL(俗称&lt;em&gt;造轮子&lt;/em&gt;)，然后不断对比自己版
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++ STL" scheme="http://yoursite.com/tags/C-STL/"/>
+    
+  </entry>
   
   <entry>
     <title>一次youtube学习英语实践</title>
