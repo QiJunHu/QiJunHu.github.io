@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-23T16:00:36.443Z</updated>
+  <updated>2016-03-23T16:04:23.892Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/03/23/TinySTL%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"/>
     <id>http://yoursite.com/2016/03/23/TinySTL设计与实现/</id>
     <published>2016-03-23T15:38:55.000Z</published>
-    <updated>2016-03-23T16:00:36.443Z</updated>
+    <updated>2016-03-23T16:04:23.892Z</updated>
     
     <content type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;学习和理解template 和STL 的最好方式就是自己用template 造一个STL(俗称&lt;em&gt;造轮子&lt;/em&gt;)，然后不断对比自己版本的STL与标准版本的STL(sgi STL 或者其它版本），不断重构自己的版本，使自己的版本达到或者超过标准库版本。&lt;/p&gt;
 &lt;h2 id=&quot;计划&quot;&gt;&lt;a href=&quot;#计划&quot; class=&quot;headerlink&quot; title=&quot;计划&quot;&gt;&lt;/a&gt;计划&lt;/h2&gt;&lt;ol&gt;
@@ -48,7 +48,9 @@
       <category term="C++" scheme="http://yoursite.com/categories/C/"/>
     
     
-      <category term="C++ STL" scheme="http://yoursite.com/tags/C-STL/"/>
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+      <category term="STL" scheme="http://yoursite.com/tags/STL/"/>
     
   </entry>
   
