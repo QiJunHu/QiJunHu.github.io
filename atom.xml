@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-19T16:13:59.040Z</updated>
+  <updated>2016-05-23T15:58:22.819Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,100 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>爬虫基础--大数据时代的生产工具</title>
+    <link href="http://yoursite.com/2016/05/23/Python%E7%88%AC%E8%99%AB%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://yoursite.com/2016/05/23/Python爬虫介绍/</id>
+    <published>2016-05-23T14:48:33.000Z</published>
+    <updated>2016-05-23T15:58:22.819Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;我眼中爬虫的意义：爬虫是我们在信息化社会中获取信息最有效的工具.&lt;/strong&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;大数据的时代已经来临，基于大数据的数据挖掘，个性化推荐等领域都如火如荼。爬虫是个人获取大数据非常有效的工具。&lt;br&gt;大学毕业设计时的课题是实现一套股票题材的文本理解系统，输入是一段文本（股评，财经评论等），系统会输出文本是推荐买入，持仓还是卖出。基于大量样本数据的情况下，使用了决策树，随机森林，支持向量机3种不同的机器学习算法来训练模型，然后根据训练得到的模型来给出预测。&lt;br&gt;这实际就是目前淘宝，百度等各大互联网公司广泛使用的个性化推荐系统的原型。这里面非常重要的是需要有大量的样本的数据来训练预测模型，获取的大量的数据就得依靠爬虫了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;大数据时代的生产模式：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;获取数据(爬虫等)  —- 数据处理(数据挖掘，机器学习等）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;爬虫工作原理&quot;&gt;&lt;a href=&quot;#爬虫工作原理&quot; class=&quot;headerlink&quot; title=&quot;爬虫工作原理&quot;&gt;&lt;/a&gt;爬虫工作原理&lt;/h3&gt;&lt;p&gt;首先爬虫是什么?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动的抓取万维网信息的程序&amp;gt;或者脚本。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们使用的互联网是网状的，一个一个WEB页面通过各种各样的方式链接在一起，就像一个蜘蛛网一样。我们实现的程序或脚本就像一只虫子一样从这个页面爬到另一个页面，抓取其中的信息，所以形象的称这样的工具为爬虫。&lt;/p&gt;
+&lt;p&gt;爬虫程序一般需要实现以下几点：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;爬取网页：发送和接收HTTP（或HTTPS）请求  &lt;/li&gt;
+&lt;li&gt;提取数据：解析获取到的HTML内容，从中提取需要的数据  &lt;/li&gt;
+&lt;li&gt;爬取范围：指定程序爬取的网页范围，包括如何从一个页面转移到另一个页面，爬取页面的终止条件等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;python爬虫实战&quot;&gt;&lt;a href=&quot;#python爬虫实战&quot; class=&quot;headerlink&quot; title=&quot;python爬虫实战&quot;&gt;&lt;/a&gt;python爬虫实战&lt;/h3&gt;&lt;p&gt;选择python 来实现爬虫，而不是自己更熟悉的C++，是因为python 有非常多网络相关的标准库，在网络方面用起来更方面些。&lt;br&gt;在python中主要使用&lt;a href=&quot;https://docs.python.org/2/library/urllib2.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;urllib,urllib2,httplib&lt;/a&gt;这几个库来处理HTTP相关的内容，实现&lt;strong&gt;爬取网页&lt;/strong&gt;；&lt;br&gt;从HTML内容中提取需要的数据主要通过&lt;strong&gt;正则表达式&lt;/strong&gt;实现， python 的正则表达式库是&lt;a href=&quot;https://docs.python.org/2/library/re.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;re&lt;/a&gt;；&lt;br&gt; 至于爬虫爬取网页的边界则是有用户自己控制，不需要特殊的技术支持&lt;/p&gt;
+&lt;p&gt;下面的代码用于从&lt;a href=&quot;http://www.qiushibaike.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;糗事百科&lt;/a&gt;中自动获取&lt;em&gt;作者，段子内容，图片，好笑数，评论数&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# author huqijun ,2016/05/23
+
+#import urllib,urllib2,re
+import urllib
+import urllib2
+import re
+
+
+page = 1
+# url for qiushibaik
+url = &amp;quot;http://www.qiushibaike.com/8hr/page/&amp;quot; + str(page)
+user_agent = &amp;apos;Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)&amp;apos;
+# http header
+headers = {&amp;apos;User-Agent&amp;apos;:user_agent}
+
+# Regular expression to extract data from HTML
+pattern = re.compile(&amp;apos;&amp;lt;div class=&amp;quot;author clearfix&amp;quot;&amp;gt;.*?target=&amp;quot;_blank&amp;quot; title=&amp;quot;(.*?)&amp;quot;&amp;gt;.*?&amp;lt;div class=&amp;quot;content&amp;quot;&amp;gt;(.*?)&amp;apos;+
+                 &amp;apos;&amp;lt;/div&amp;gt;.*?&amp;lt;img src=&amp;quot;(.*?)&amp;quot; alt=.*?class=&amp;quot;number&amp;quot;&amp;gt;(.*?)&amp;lt;/i&amp;gt;.*?class=&amp;quot;number&amp;quot;&amp;gt;(.*?)&amp;lt;/i&amp;gt;&amp;apos;,re.S)
+
+try:
+    # open url
+    request = urllib2.Request(url,headers= headers)
+    # get response
+    response = urllib2.urlopen(request)
+    content = response.read().decode(&amp;apos;utf-8&amp;apos;)
+    # regular match
+    items = re.findall(pattern,content)
+    # print outcome
+    for item in items:
+        print item[0],item[1],item[2],item[3],item[4]
+except urllib2.URLError,e:
+    if hasattr(e,&amp;quot;code&amp;quot;):
+        print e.code
+    if hasattr(e,&amp;quot;reason&amp;quot;):
+        print e.reason
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;程序运行的结果(这里只展示一条）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;暖男找暖女 &lt;/p&gt;
+&lt;p&gt;老妹结婚前，妹夫的四个死党商量着闹洞房砸夯，结果结婚那天，在外地工作的老妹弄来了十九个伴娘，最轻的也一百六十多斤，个个又高又壮，妹&amp;gt;夫那四个死党准备闹洞房，一进门傻了，十九个女汉子把门一关，拳一握，硬把四个老爷们闹了，过程中，一个想跑，被拎小鸡一样又拎回去了。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://pic.qiushibaike.com/system/avtnew/3061/30613416/medium/20160514003803.jpg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://pic.qiushibaike.com/system/avtnew/3061/30613416/medium/20160514003803.jpg&lt;/a&gt; 415 4&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;看，我们成功的通过爬虫获取到糗事百科上的段子，爬虫的原理就是这样简单！&lt;/p&gt;
+&lt;h3 id=&quot;进阶&quot;&gt;&lt;a href=&quot;#进阶&quot; class=&quot;headerlink&quot; title=&quot;进阶&quot;&gt;&lt;/a&gt;进阶&lt;/h3&gt;&lt;p&gt;前面的爬虫实例只是爬取一个或者几个页面，所以比较简单。 但是当我们想爬取一整个网站（如豆瓣，页面总数至少是千万级别）这样简单的实现就不行了。 以上面这样简单的实现爬整个豆瓣不知道100年能不能搞定。&lt;br&gt;这时候就需要从以下几个方面来提升爬虫的性能：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;多线程  &lt;/li&gt;
+&lt;li&gt;集群&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h3&gt;&lt;p&gt;Python快速入门，适合有其他语言基础的同学：  &lt;a href=&quot;http://learnpythonthehardway.org/book/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;Learn Python The Hard Way&lt;/em&gt;&lt;/a&gt;&lt;br&gt;Pyhotn教程，适合零基础同学：&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;廖雪峰Python教程&lt;/em&gt;&lt;/a&gt;&lt;br&gt;好用的Python IDE: &lt;a href=&quot;http://www.jetbrains.com/pycharm/download/#section=windows&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PyCharm&lt;/a&gt;&lt;br&gt;Python爬虫教程： &lt;a href=&quot;http://cuiqingcai.com/1052.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;Python爬虫学习系列教程&lt;/em&gt;&lt;/a&gt;&lt;br&gt;正则表达式非常好用的调试工具: &lt;a href=&quot;http://www.regexbuddy.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;RegexBuddy&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   &lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="爬虫" scheme="http://yoursite.com/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="python 爬虫" scheme="http://yoursite.com/tags/python-%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>换位思考，情绪管理以及多角度看问题</title>
