@@ -73,7 +73,7 @@
 我眼中爬虫的意义：爬虫是我们在信息化社会中获取信息最有效的工具.  
 
 大数据的时代已经来临，基于大数据的数据挖掘，个性化推荐等领域都如火如荼。爬虫是个人获取大数据非常有效的工具。大学毕业设计时的课题是实现一套股票题材的文本理解系统，输入是一段文本（股评，财经评">
-<meta property="og:updated_time" content="2016-05-23T15:58:22.819Z">
+<meta property="og:updated_time" content="2016-05-24T15:59:41.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫基础--大数据时代的生产工具">
 <meta name="twitter:description" content="概述说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   
@@ -385,6 +385,7 @@ except urllib2.URLError,e:
 <p><a href="http://pic.qiushibaike.com/system/avtnew/3061/30613416/medium/20160514003803.jpg" target="_blank" rel="external">http://pic.qiushibaike.com/system/avtnew/3061/30613416/medium/20160514003803.jpg</a> 415 4</p>
 </blockquote>
 <p>看，我们成功的通过爬虫获取到糗事百科上的段子，爬虫的原理就是这样简单！</p>
+<p>优化后完整实现的代码: <a href="https://github.com/geekhuqijun/webCrawler/blob/master/QSBK_Crawler.py" target="_blank" rel="external"><em>QSBK_Crawler.py</em></a></p>
 <h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>前面的爬虫实例只是爬取一个或者几个页面，所以比较简单。 但是当我们想爬取一整个网站（如豆瓣，页面总数至少是千万级别）这样简单的实现就不行了。 以上面这样简单的实现爬整个豆瓣不知道100年能不能搞定。<br>这时候就需要从以下几个方面来提升爬虫的性能：  </p>
 <ol>
 <li>多线程  </li>
