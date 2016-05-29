@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-29T14:55:08.524Z</updated>
+  <updated>2016-05-29T15:26:13.913Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/05/23/Python%E7%88%AC%E8%99%AB%E4%BB%8B%E7%BB%8D/"/>
     <id>http://yoursite.com/2016/05/23/Python爬虫介绍/</id>
     <published>2016-05-23T14:48:33.000Z</published>
-    <updated>2016-05-29T14:55:08.524Z</updated>
+    <updated>2016-05-29T15:26:13.913Z</updated>
     
     <content type="html">&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   &lt;/p&gt;
 &lt;blockquote&gt;
@@ -276,7 +276,7 @@ spider.test()
 &lt;p&gt;女，22岁，魔羯座，年薪6-9万，本科，身高162CM&lt;br&gt;欣芭比&lt;br&gt;从事自由职业工作,汉族&lt;br&gt;无住房,已买车,未婚&lt;br&gt;浙江杭州江干区&lt;br&gt;浙江温州&lt;br&gt;比较安静独立喜欢电影美食狗。&lt;br&gt;没有条条框框彼此合适可以从朋友做起。&lt;br&gt;&lt;a href=&quot;http://att3.citysbs.com/600xhangzhou/2016/05/29/13/780x780-135556_v2_14711464501356634_a2e12819608e252958e4ec4e20234a30.jpg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://att3.citysbs.com/600xhangzhou/2016/05/29/13/780x780-135556_v2_14711464501356634_a2e12819608e252958e4ec4e20234a30.jpg&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;主要的思路是通过爬虫爬取论坛中所有符合条件女性个人信息， 通过机器学习来判断是否是喜欢的类型，判断喜欢的自动则发送站内信。&lt;/p&gt;
-&lt;p&gt;完整的代码在这里&lt;a href=&quot;&quot;&gt;&lt;em&gt;19lou_Crawler.py&lt;/em&gt;&lt;/a&gt; ，包括爬虫，机器学习，站内信部分  &lt;/p&gt;
+&lt;p&gt;完整的代码在这里&lt;a href=&quot;https://github.com/geekhuqijun/webCrawler/tree/master/spider_19lou&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;em&gt;19lou_Crawler.py&lt;/em&gt;&lt;/a&gt; ，包括爬虫，机器学习，站内信部分  &lt;/p&gt;
 &lt;h3 id=&quot;困难与解决办法&quot;&gt;&lt;a href=&quot;#困难与解决办法&quot; class=&quot;headerlink&quot; title=&quot;困难与解决办法&quot;&gt;&lt;/a&gt;困难与解决办法&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;正则表达式对人类相当不友好，比较难写&lt;br&gt;解决办法：&lt;br&gt;RegexBuddy:  好用的正则表达式调试工具；&lt;br&gt;PyQuery： JQuery 的Python 实现，Jquery 是专门用来从HTML中提取信息的一种语言&lt;br&gt;Xpath，BeautifulSOAP:  都是从HTML 中提取信息的工具&lt;/li&gt;
 &lt;/ol&gt;
