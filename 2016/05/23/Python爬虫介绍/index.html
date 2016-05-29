@@ -73,7 +73,7 @@
 我眼中爬虫的意义：爬虫是我们在信息化社会中获取信息最有效的工具.  
 
 大数据的时代已经来临，基于大数据的数据挖掘，个性化推荐等领域都如火如荼。爬虫是个人获取大数据非常有效的工具。大学毕业设计时的课题是实现一套股票题材的文本理解系统，输入是一段文本（股评，财经评">
-<meta property="og:updated_time" content="2016-05-24T15:59:41.791Z">
+<meta property="og:updated_time" content="2016-05-29T14:55:08.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫基础--大数据时代的生产工具">
 <meta name="twitter:description" content="概述说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   
@@ -386,13 +386,224 @@ except urllib2.URLError,e:
 </blockquote>
 <p>看，我们成功的通过爬虫获取到糗事百科上的段子，爬虫的原理就是这样简单！</p>
 <p>优化后完整实现的代码: <a href="https://github.com/geekhuqijun/webCrawler/blob/master/QSBK_Crawler.py" target="_blank" rel="external"><em>QSBK_Crawler.py</em></a></p>
+<hr>
+<p>这里有一个爬取本地相亲论坛所有符合条件女性的详细信息的例子供大家参考: </p>
+<pre><code># -*- coding:utf-8 -*-
+# author huqijun ,2016/05/26
+#  19楼爬虫
+# 19楼(www.19lou.com) 是一个杭州本地生活平台，这里主要用到其征婚板块
+# 爬取19楼符合条件的女性资料，通过机器学习判断是否是喜欢的类型，如果是则自动发送站内信
+
+
+import re
+import urllib
+import urllib2
+import cookielib
+import zlib
+
+
+
+class _19floor(object):
+    def __init__(self):
+        # base url
+        self.url_base1 = &quot;http://www.19lou.com/love/list-164-&quot;
+        self.url_base2 = &quot;.html&quot;
+        #  page index 1
+        self.pageIndex = 1
+        # search condition
+        self.SearchConditionparameters = {
+            # looking for female
+            &quot;sex&quot;: &quot;0&quot;,
+            # 18 to 30 year ole
+            &quot;startAge&quot;: &quot;18&quot;,
+            &quot;endAge&quot;: &quot;30&quot;,
+            # not married
+            &quot;marry&quot;: &quot;1&quot;,
+            # location now in hangzhou ,zhejiang
+            &quot;locationProvince&quot;: &quot;31&quot;,
+            &quot;locationCity&quot;: &quot;383&quot;
+        }
+        self.SearchConditiondata = urllib.urlencode(self.SearchConditionparameters)
+        # login data
+        # replace with real username and passwd
+        self.loginParam = {
+            &quot;userName&quot;: &quot;username&quot;,
+            &quot;userPass&quot;: &quot;password&quot;
+        }
+        self.loginData = urllib.urlencode(self.loginParam)
+        self.loginURL = &quot;http://www.19lou.com/login&quot;
+        self.cookie = cookielib.CookieJar()
+        # login
+        self.login()
+
+
+    # login to website
+    def login(self):
+        request = urllib2.Request(self.loginURL, self.loginData)
+        handler = urllib2.HTTPCookieProcessor(self.cookie)
+        opener = urllib2.build_opener(handler)
+        response = opener.open(request)
+        #print self.cookie
+
+    # get the serarch result of page pageIndex,  do not need login to get information
+    def getSearchResult(self, pageIndex):
+        url = self.url_base1 + str(pageIndex) + self.url_base2
+        request = urllib2.Request(url, self.SearchConditiondata)
+        # HTML webpage
+        response = urllib2.urlopen(request)
+        # 19lou is encoded in gb2312
+        _response = response.read().decode(&apos;gb2312&apos;, &apos;ignore&apos;)
+        pattern = re.compile(
+            &apos;&lt;div class=&quot;list-details&quot;&gt;.*?&lt;a href=&quot;(.*?)&quot; target=&quot;_blank&quot; class=&quot;user-details&quot; ttname=&quot;bbs_love_yhxx&quot;&gt;&apos;,re.S)
+        items = re.findall(pattern, _response)
+        return items
+
+    # need login to get detail information of Girls
+    def getDetailInfo(self, url):
+        #print url
+        # cookie information
+        cookieInfo = {}
+        for item in self.cookie:
+            cookieInfo[item.name] = item.value
+            print item
+
+        _sbs_auth_id = cookieInfo[&quot;_sbs_auth_id&quot;]
+        _sbs_auth_uid = cookieInfo[&quot;_sbs_auth_uid&quot;]
+        dm_ui = cookieInfo[&quot;dm_ui&quot;]
+        sbs_auth_id = cookieInfo[&quot;sbs_auth_id&quot;]
+        sbs_auth_uid = cookieInfo[&quot;sbs_auth_uid&quot;]
+        JSESSIONID = cookieInfo[&quot;JSESSIONID&quot;]
+        f8big = cookieInfo[&quot;f8big&quot;]
+
+        #print _sbs_auth_id,_sbs_auth_uid,dm_ui,sbs_auth_id,sbs_auth_uid,JSESSIONID,f8big
+
+
+        cookieHead =  r&quot;bdshare_firstime=1460288971964;_Z3nY0d4C_=37XgPK9h-%3D1920-1920-1920-949;&quot;+\
+             &quot;f8big=%s; _DM_S_=7f26ea80bdc38e887ed6eef907b1c333; JSESSIONID=%s; &quot;  % (f8big,JSESSIONID) +\
+             r&quot;fr_adv_last=thread-top-reg; fr_adv=bbs_top_20160529_12651464335062915;checkin__40459849_0529=9_12_12;&quot; + \
+                  &quot;sbs_auth_uid={0:s}; sbs_auth_id={1:s}; sbs_auth_remember=1; _sbs_auth_uid=&amp;s;_sbs_auth_id={2:s}; dm_ui={3:s};&quot;.format(
+                      sbs_auth_uid, sbs_auth_id, _sbs_auth_uid, _sbs_auth_id, dm_ui)
+
+
+        cookieEnd = r&quot;_dm_userinfo=%7B%22uid%22%3A%2240459849%22%2C%22category%22%3A%22%E6%97%85%E6%B8%B8%2C%E7%BE%8E%E9%A3%9F%2C%E6%83%85%E6%84%9F%2C%E5%A9%9A%E5%BA%86%22%2C%22&quot; + \
+             r&quot;sex%22%3A%221%22%2C%22frontdomain%22%3A%22www.19lou.com%22%2C%22stage%22%3A%22%22%2C%22ext%22%3A%22%22%2C%22ip%22%3A%2239.189.203.105%22%2C%22city%22%3A%22%E6%B5%99%E6%B1%9F%3A%E6%9D%AD%E5%B7%9E%22%7D; &quot; + \
+             r&quot;loginwin_opened_user=40459849; Hm_lvt_5185a335802fb72073721d2bb161cd94=1464346870,1464364960,1464437399,1464485996; Hm_lpvt_5185a335802fb72073721d2bb161cd94=1464487611; &quot; + \
+             r&quot;_DM_SID_=762d93b17978f46a069f43205ebdfb01; screen=1903; _dm_tagnames=%5B%7B%22k%22%3A%22%E5%A5%B3%E7%94%9F%E5%BE%81%E5%8F%8B%22%2C%22c%22%3A267%7D%2C%7B%22k%22%3A%22%E7%9B%&quot; + \
+             r&quot;B8%E4%BA%B2%E8%AE%BA%E5%9D%9B%22%2C%22c%22%3A39%7D%2C%7B%22k%22%3A%22%E6%9D%AD%E5%B7%9E%E7%9B%B8%E4%BA%B2%E7%BD%91%22%2C%22c%22%3A39%7D%2C%7B%22k%22%3A%22%E6%9D%AD%E5%B7%9E%E5%BE%81%E5%A9%9A%E7%BD%91%22%2C%22c&quot; + \
+             r&quot;%22%3A39%7D%2C%7B%22k%22%3A%22%E5%85%B6%E4%BB%96%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%9D%AD%E5%B7%9E%22%2C%22c%22%3A134%7D%2C%7B%22k%22%3A%22%E8%90%A7%E5%B1%B1%22%2C%22c%22%3A6%7D%2C%7B%22k%22%3A%22%E5%8D%95&quot; + \
+             r&quot;%E8%BA%AB%E7%94%B7%E5%A5%B3%E7%9B%B8%E5%86%8C%22%2C%22c%22%3A3%7D%2C%7B%22k%22%3A%22%E5%BE%81%E5%8F%8B%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%89%BE%E7%94%B7%E5%8F%8B%22%2C%22c%22%3A613%7D%2C%7B%22k%22%3A%22%E7%9B&quot; + \
+             r&quot;%B8%E4%BA%B2%22%2C%22c%22%3A4%7D%2C%7B%22k%22%3A%22%E7%BE%8E%E9%A3%9F%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E7%BB%93%E5%A9%9A%22%2C%22c%22%3A2%7D%2C%7B%22k%22%3A%22%E5%BA%8A%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%&quot; + \
+             r&quot;E5%AE%B6%E5%BA%AD%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%83%85%E6%84%9F%E8%AF%9D%E9%A2%98%22%2C%22c%22%3A2%7D%2C%7B%22k%22%3A%22%E6%83%85%E6%84%9F%E6%97%A5%E8%AE%B0%22%2C%22c%22%3A6%7D%2C%7B%22k%22%3A%22%E5%89%8&quot; + \
+             r&quot;D%E7%94%B7%E5%8F%8B%22%2C%22c%22%3A3%7D%2C%7B%22k%22%3A%22%E6%9A%A7%E6%98%A7%22%2C%22c%22%3A2%7D%2C%7B%22k%22%3A%22%E8%BD%AF%E5%A6%B9%E5%AD%90%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%9E%97%E5%BF%97%E7%8E%B2%22%2C%&quot; + \
+             r&quot;22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%97%85%E8%A1%8C%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E4%BA%A4%E5%8F%8B%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%9D%AD%E5%B7%9E%E4%BA%A4%E5%8F%8B%E7%BD%91%22%2C%22c%22%3A4%7D%2C&quot; + \
+             r&quot;%7B%22k%22%3A%22%E6%9D%AD%E5%B7%9E%E4%BA%A4%E5%8F%8B%E8%AE%BA%E5%9D%9B%22%2C%22c%22%3A4%7D%2C%7B%22k%22%3A%22%E6%81%8B%E7%88%B1%22%2C%22c%22%3A4%7D%2C%7B%22k%22%3A%22%E6%89%BE%E5%A5%B3%E5%8F%8B%22%2C%22c%22%3A22%7D&quot; + \
+             r&quot;%2C%7B%22k%22%3A%22%E8%90%A7%E5%B1%B1%E7%94%B7%22%2C%22c%22%3A5%7D%2C%7B%22k%22%3A%22%E5%81%A5%E8%BA%AB%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E5%81%A5%E8%BA%AB%E6%88%BF%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%B7&quot; + \
+             r&quot;%B1%E6%83%85%22%2C%22c%22%3A6%7D%2C%7B%22k%22%3A%22%E8%90%9D%E8%8E%89%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E5%A4%A9%E7%A7%A4%E5%A5%B3%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%9C%AC%E5%A1%98%E5%A5%B3%22%2C%22c%22&quot; + \
+             r&quot;%3A1%7D%2C%7B%22k%22%3A%22%E9%97%AA%E5%A9%9A%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E9%85%B1%E6%B2%B9%22%2C%22c%22%3A4%7D%2C%7B%22k%22%3A%22%E9%97%BA%E8%9C%9C%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E4%B8%BD%E6%B0%B4&quot; + \
+             r&quot;%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E4%B8%BE%E6%8A%A5%E8%BF%9D%E7%AB%A0%22%2C%22c%22%3A2%7D%2C%7B%22k%22%3A%22%E5%85%AB%E5%8D%A6%E7%BB%AF%E9%97%BB%22%2C%22c%22%3A2%7D%2C%7B%22k%22%3A%22%E7%89%B5%E6%89%8B%22%2C%&quot; + \
+             r&quot;22c%22%3A2%7D%2C%7B%22k%22%3A%22%E9%BB%84%E6%99%93%E6%98%8E%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E9%A2%86%E8%AF%81%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%9D%8E%E6%98%93%E5%B3%B0%22%2C%22c%22%3A1%7D%2C%7B%22k%22&quot; + \
+             r&quot;%3A%22%E6%96%87%E5%A8%B1%E8%BD%AE%E6%92%AD%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%97%B6%E5%B0%9A%22%2C%22c%22%3A3%7D%2C%7B%22k%22%3A%22%E6%B4%BB%E5%8A%A8%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E6%96%B0%E5%A8%9&quot; + \
+             r&quot;8%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E5%A9%9A%E7%A4%BC%22%2C%22c%22%3A1%7D%2C%7B%22k%22%3A%22%E5%A9%9A%E7%BA%B1%22%2C%22c%22%3A1%7D%5D; pm_count=%7B%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_2%22%3A21&quot; + \
+             r&quot;%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_1%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_4%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_3%22%3A21%2C%22&quot; + \
+             r&quot;pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_6%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x401_1%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_210x200_7%22%3A21%2C%22pc_hangzhou_city&quot; + \
+             r&quot;EnterMouth_advmodel_adv_330x401_3%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_330x200_1%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_330x401_1%22%3A21%2C%22pc_hangzhou_cityEnterMouth_advmodel_adv_&quot; + \
+             r&quot;330x401_2%22%3A21%2C%22pc_hangzhou_forumthread_button_adv_180x180_4%22%3A261%2C%22pc_hangzhou_forumthread_button_adv_180x180_3%22%3A261%2C%22pc_hangzhou_forumthread_button_adv_180x180_2%22%3A261%2C%22pc_hangzhou&quot; + \
+             r&quot;_forumthread_button_adv_180x180_1%22%3A261%2C%22pc_hangzhou_forumthread_button_adv_180x180_5%22%3A15%2C%22pc_allCity_threadView_advmodel_adv_360x120_1%22%3A64%2C%22pc_allCity_threadView_button_adv_190x205_&quot; + \
+             r&quot;1%22%3A3%2C%22pc_hangzhou_sbs_20_advmodel_adv_300x250_2%22%3A2%2C%22pc_hangzhou_sbs_20_advmodel_adv_200x200_1%22%3A2%7D; dayCount=%5B%7B%22id%22%3A7971%2C%22count%22%3A1%7D%2C%7B%22id%22%3A8099%2C%22count&quot; + \
+             r&quot;%22%3A2%7D%2C%7B%22id%22%3A7238%2C%22count%22%3A2%7D%2C%7B%22id%22%3A8101%2C%22count%22%3A2%7D%2C%7B%22id%22%3A7421%2C%22count%22%3A1%7D%2C%7B%22id%22%3A8338%2C%22count%22%3A2%7D%2C%7B%22id%22%3A7107%2C%22count&quot; + \
+             r&quot;%22%3A1%7D%2C%7B%22id%22%3A7724%2C%22count%22%3A2%7D%2C%7B%22id%22%3A8097%2C%22count%22%3A2%7D%2C%7B%22id%22%3A8758%2C%22count%22%3A2%7D%2C%7B%22id%22%3A6718%2C%22count%22%3A2%7D%2C%7B%22id%22%3A7119%2C%22count&quot; + \
+             r&quot;%22%3A5%7D%2C%7B%22id%22%3A7919%2C%22count%22%3A5%7D%2C%7B%22id%22%3A8294%2C%22count%22%3A3%7D%2C%7B%22id%22%3A8325%2C%22count%22%3A1%7D%2C%7B%22id%22%3A8662%2C%22count%22%3A3%7D%2C%7B%22id%22%3A6700%2C%22count&quot; + \
+             r&quot;%22%3A1%7D%5D&quot;
+
+        cookie = cookieHead + cookieEnd
+        #print cookie
+
+        header = {
+            &quot;Accept&quot;: &quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;,
+            &quot;Accept-Encoding&quot;: &quot;gzip, deflate, sdch&quot;,
+            &quot;Accept-Language&quot;: &quot;zh-CN,zh;q=0.8&quot;,
+            &quot;Cache-Control&quot;: &quot; max-age=0&quot;,
+            &quot;Connection&quot;: &quot;close&quot;,
+            &quot;Cookie&quot;: cookie,
+            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36&quot;,
+            &quot;Upgrade-Insecure-Requests&quot;: &quot;1&quot;,
+            &quot;DNT&quot;: &quot;1&quot;
+        }
+        request = urllib2.Request(url, headers=header)
+        response = urllib2.urlopen(request)
+        html = response.read()
+
+        encodeType = response.headers.get(&apos;Content-Encoding&apos;)
+
+        if encodeType == &quot;gzip&quot;:
+            html = zlib.decompress(html, 16 + zlib.MAX_WBITS)
+
+        _response = html.decode(&apos;gb2312&apos;, &apos;ignore&apos;)
+        #print _response
+        pattern = re.compile(&apos;&lt;p class=&quot;mt10&quot;&gt;(.*?)&lt;/p&gt;.*?data-uname=&quot;(.*?)&quot; data-uid=&quot;.*?&lt;td colspan=&quot;2&quot;&gt;(.*?)    &lt;/td&gt;.*?&apos; +
+              &apos;&lt;td colspan=&quot;2&quot;&gt;(.*?)&lt;/td&gt;.*?&lt;td colspan=&quot;2&quot;&gt;(.*?)&lt;/td&gt;.*?&lt;td colspan=&quot;2&quot;&gt;(.*?)&lt;/td&gt;.*?&lt;td&gt;&apos; +
+            &apos;(.*?)&lt;/td&gt;.*?&lt;td style=&quot;word-wrap:break-word;word-break:break-all;&quot;&gt;(.*?)&lt;/td&gt;.*?&lt;img src=&quot;(.*?)&quot;/&gt;&apos;, re.S)
+        # item is a list that contains a tuple
+        item = re.findall(pattern, _response)
+        girlInfo = []
+        for temp in item[0]:
+            # remove \r\n
+            temp = temp.replace(&apos;\r\n&apos;,&apos;&apos;)
+            # remove space
+            temp = temp.replace(&apos; &apos;,&apos;&apos;)
+            girlInfo.append(temp)
+        return girlInfo
+
+    # write gril&apos;s info to file, eg excel file
+    def saveTofile(self,girlInfo):
+        pass
+
+
+    def test(self):
+        pageIndex = 1
+        items = self.getSearchResult(pageIndex)
+        girlInfo = self.getDetailInfo(items[0])
+        for temp in girlInfo:
+            print temp
+
+
+
+spider = _19floor()
+spider.test()
+</code></pre><p>程序测试结果：</p>
+<blockquote>
+<p>女，22岁，魔羯座，年薪6-9万，本科，身高162CM<br>欣芭比<br>从事自由职业工作,汉族<br>无住房,已买车,未婚<br>浙江杭州江干区<br>浙江温州<br>比较安静独立喜欢电影美食狗。<br>没有条条框框彼此合适可以从朋友做起。<br><a href="http://att3.citysbs.com/600xhangzhou/2016/05/29/13/780x780-135556_v2_14711464501356634_a2e12819608e252958e4ec4e20234a30.jpg" target="_blank" rel="external">http://att3.citysbs.com/600xhangzhou/2016/05/29/13/780x780-135556_v2_14711464501356634_a2e12819608e252958e4ec4e20234a30.jpg</a></p>
+</blockquote>
+<p>主要的思路是通过爬虫爬取论坛中所有符合条件女性个人信息， 通过机器学习来判断是否是喜欢的类型，判断喜欢的自动则发送站内信。</p>
+<p>完整的代码在这里<a href=""><em>19lou_Crawler.py</em></a> ，包括爬虫，机器学习，站内信部分  </p>
+<h3 id="困难与解决办法"><a href="#困难与解决办法" class="headerlink" title="困难与解决办法"></a>困难与解决办法</h3><ol>
+<li>正则表达式对人类相当不友好，比较难写<br>解决办法：<br>RegexBuddy:  好用的正则表达式调试工具；<br>PyQuery： JQuery 的Python 实现，Jquery 是专门用来从HTML中提取信息的一种语言<br>Xpath，BeautifulSOAP:  都是从HTML 中提取信息的工具</li>
+</ol>
+<ol>
+<li><p>使用python 请求一个页面， 返回的是一段JavaScript 代码，而不是实际的HTML<br>解决办法：<br>通过Chrom 抓取浏览器的交互过程，发现浏览器GET请求是可以收到HTML的响应的；<br>通过WireShark 抓取爬虫的请求，对比和浏览器的请求，发现HTTPHeader 中缺少Cookie 字段，加上后即可(该网站用户不登录请求时都会带Cookie)</p>
+</li>
+<li><p>编解码问题，抓包看已返回HTML，但程序中输入还是乱码<br>解决办法：<br>查看网页源码，<strong>meta charset=”gb2312”</strong>， 使用gb2312解码后还是乱码;<br>最后发现是HTML的内容经过gzip压缩, HTTP响应头中有<strong>Content-Encoding:gzip</strong><br>使用zlip解压问题解决：  </p>
+</li>
+</ol>
+<pre><code>response = urllib2.urlopen(request)
+
+html = response.read()
+
+encodeType = response.headers.get(&apos;Content-Encoding&apos;)
+
+if encodeType == &quot;gzip&quot;:
+
+html= zlib.decompress(html,16+zlib.MAX_WBITS)
+
+print html      
+</code></pre><h3 id="心得与体会"><a href="#心得与体会" class="headerlink" title="心得与体会"></a>心得与体会</h3><p>不能正确获得想要的HTML页面，核心的解决办法就是<strong>构造和实际浏览器一模一样的请求</strong>。<br>当程序的行为和浏览器一样时，各种防爬虫的技术就对你没有办法了。<br>而构造和浏览器一模一样的请求也很简单，HTTP通过WireShark 抓包对比，一个字段一个字段修改成一样即可； HTTPS可以使用fiddler工具抓包对比（需要配置下SSL证书）</p>
 <h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><p>前面的爬虫实例只是爬取一个或者几个页面，所以比较简单。 但是当我们想爬取一整个网站（如豆瓣，页面总数至少是千万级别）这样简单的实现就不行了。 以上面这样简单的实现爬整个豆瓣不知道100年能不能搞定。<br>这时候就需要从以下几个方面来提升爬虫的性能：  </p>
 <ol>
 <li>多线程  </li>
 <li>集群</li>
 </ol>
 <hr>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>Python快速入门，适合有其他语言基础的同学：  <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external"><em>Learn Python The Hard Way</em></a><br>Pyhotn教程，适合零基础同学：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="external"><em>廖雪峰Python教程</em></a><br>好用的Python IDE: <a href="http://www.jetbrains.com/pycharm/download/#section=windows" target="_blank" rel="external">PyCharm</a><br>Python爬虫教程： <a href="http://cuiqingcai.com/1052.html" target="_blank" rel="external"><em>Python爬虫学习系列教程</em></a><br>正则表达式非常好用的调试工具: <a href="http://www.regexbuddy.com/" target="_blank" rel="external"><em>RegexBuddy</em></a></p>
+<h3 id="参考资料与实用工具"><a href="#参考资料与实用工具" class="headerlink" title="参考资料与实用工具"></a>参考资料与实用工具</h3><p>Python快速入门，适合有其他语言基础的同学：  <a href="http://learnpythonthehardway.org/book/" target="_blank" rel="external"><em>Learn Python The Hard Way</em></a><br>Pyhotn教程，适合零基础同学：<a href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="_blank" rel="external"><em>廖雪峰Python教程</em></a><br>好用的Python IDE: <a href="http://www.jetbrains.com/pycharm/download/#section=windows" target="_blank" rel="external">PyCharm</a><br>Python爬虫教程： <a href="http://cuiqingcai.com/1052.html" target="_blank" rel="external"><em>Python爬虫学习系列教程</em></a><br>正则表达式非常好用的调试工具: <a href="http://www.regexbuddy.com/" target="_blank" rel="external"><em>RegexBuddy</em></a><br>抓包工具: <a href="https://www.wireshark.org/download.html" target="_blank" rel="external">WireShark</a><br>HTTPS 抓包分析工具: <a href="http://www.telerik.com/fiddler" target="_blank" rel="external">fiddler</a><br>fiddler分析HTTPS ：<a href="http://www.cnblogs.com/bukudekong/p/3837125.html" target="_blank" rel="external">配置fiddler查看HTTPS</a></p>
 
       
     </div>
@@ -625,7 +836,7 @@ except urllib2.URLError,e:
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬虫工作原理"><span class="nav-number">2.</span> <span class="nav-text">爬虫工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python爬虫实战"><span class="nav-number">3.</span> <span class="nav-text">python爬虫实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶"><span class="nav-number">4.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬虫工作原理"><span class="nav-number">2.</span> <span class="nav-text">爬虫工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python爬虫实战"><span class="nav-number">3.</span> <span class="nav-text">python爬虫实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#困难与解决办法"><span class="nav-number">4.</span> <span class="nav-text">困难与解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#心得与体会"><span class="nav-number">5.</span> <span class="nav-text">心得与体会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶"><span class="nav-number">6.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料与实用工具"><span class="nav-number">7.</span> <span class="nav-text">参考资料与实用工具</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
