@@ -41,6 +41,8 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="C++," />
+
 
 
 
@@ -57,15 +59,28 @@
 
 
 
-<meta name="description" content="每当你想批评别人时，要记住不是所有人都有过你所拥有的优越条件！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="他来了又走了">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="main函数两种常见形式在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：
+
+int main(void)int main(int argc,char * argv[])
+
+第一种方式main 不接受参数，第二种方式可以在通过shell调用程序时给main 函数传入参数,argc 表示参数的个数，argv 为参数的内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="main函数的第三个参数envp">
+<meta property="og:url" content="http://yoursite.com/2016/06/16/main函数的第三个参数envp/index.html">
 <meta property="og:site_name" content="他来了又走了">
-<meta property="og:description" content="每当你想批评别人时，要记住不是所有人都有过你所拥有的优越条件！">
+<meta property="og:description" content="main函数两种常见形式在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：
+
+int main(void)int main(int argc,char * argv[])
+
+第一种方式main 不接受参数，第二种方式可以在通过shell调用程序时给main 函数传入参数,argc 表示参数的个数，argv 为参数的内容">
+<meta property="og:updated_time" content="2016-06-16T16:10:22.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="他来了又走了">
-<meta name="twitter:description" content="每当你想批评别人时，要记住不是所有人都有过你所拥有的优越条件！">
+<meta name="twitter:title" content="main函数的第三个参数envp">
+<meta name="twitter:description" content="main函数两种常见形式在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：
+
+int main(void)int main(int argc,char * argv[])
+
+第一种方式main 不接受参数，第二种方式可以在通过shell调用程序时给main 函数传入参数,argc 表示参数的个数，argv 为参数的内容">
 
 
 
@@ -83,7 +98,7 @@
   };
 </script>
 
-  <title>  - 他来了又走了 - 每当你想批评别人时，要记住不是所有人都有过你所拥有的优越条件！  </title>
+  <title> main函数的第三个参数envp | 他来了又走了 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -112,9 +127,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,15 +226,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -241,10 +248,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/16/main函数的第三个参数envp/" itemprop="url">
-                  main函数的第三个参数envp
-                </a>
+                main函数的第三个参数envp
               
             
           </h1>
@@ -317,549 +321,135 @@
       
 
       
-        
-          
-          main函数两种常见形式在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：
+        <h3 id="main函数两种常见形式"><a href="#main函数两种常见形式" class="headerlink" title="main函数两种常见形式"></a>main函数两种常见形式</h3><p>在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：</p>
+<blockquote>
+<p>int main(void)<br>int main(int argc,char * argv[])</p>
+</blockquote>
+<p>第一种方式main 不接受参数，第二种方式可以在通过shell调用程序时给main 函数传入参数,argc 表示参数的个数，argv 为参数的内容</p>
+<p>举例说明，  main 函数以第二种方式定义， 程序名为test,在shell (bash for linux ,powershell for windows)中运行该程序：</p>
+<blockquote>
+<p>test  p</p>
+</blockquote>
+<p>则argc = 2 , 两个参数， 其中程序名固定为第一个参数，在本例中 argv[0] = test , argv[1] = p</p>
+<p>bash 中各种命令不同的参数不同的效果可以通过这种机制实现</p>
+<h3 id="main的第三种形式"><a href="#main的第三种形式" class="headerlink" title="main的第三种形式"></a>main的第三种形式</h3><blockquote>
+<p>int main(int argc,char　<em> argv[],char </em> envp[])</p>
+</blockquote>
+<p>第三个参数用来在程序运行时获取系统的环境变量，操作系统运行程序时通过envp 参数将系统环境变量传递给程序</p>
+<p>测试代码：</p>
+<pre><code>#include&lt;iostream&gt;
 
-int main(void)int main(int argc,char * argv[])
 
-第一种方式main 不接受参数，第二种方式可以在
-          ...
+int main(int agrc,char * argv[],char * envp[])
+{
 
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/16/main函数的第三个参数envp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    std::cout &lt;&lt;&quot;Test the envp parameter of main function&quot;&lt;&lt;std::endl;
+    std::cout &lt;&lt; &quot;environment paramter of system: &quot;&lt;&lt;std::endl;
+
+    for(int i  = 0 ;  envp[i] ; ++i)
+    {
+        std::cout&lt;&lt;envp[i]&lt;&lt;std::endl;
+    }
+    return 0;
+
+}
+</code></pre><p>程序运行后将系统所有环境变量打印出来了(如下给出的是windows上测试结果，linux 上环境变量与windows上不同)：</p>
+<blockquote>
+<p>Test the envp parameter of main function<br>environment paramter of system:<br>ALLUSERSPROFILE=C:\ProgramData<br>APPDATA=C:\Users\alpha\AppData\Roaming<br>asl.log=Destination=file<br>CommonProgramFiles=C:\Program Files (x86)\Common Files<br>CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files<br>CommonProgramW6432=C:\Program Files\Common Files<br>COMPUTERNAME=DELL<br>ComSpec=C:\Windows\system32\cmd.exe<br>FP_NO_HOST_CHECK=NO<br>GOPATH=D:\projects\go_project<br>GOROOT=D:\Go\<br>HOMEDRIVE=C:<br>HOMEPATH=\Users\alpha<br>LOCALAPPDATA=C:\Users\alpha\AppData\Local<br>LOGONSERVER=\MicrosoftAccount<br>NUMBER_OF_PROCESSORS=4<br>OS=Windows_NT<br>Path=D:\Python27\;D:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32\config\systemprofile.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;D:\Go\bin;D:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\alpha\AppData\Roaming\npm;E:\Program Files\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin<br>PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL<br>PROCESSOR_ARCHITECTURE=x86<br>PROCESSOR_ARCHITEW6432=AMD64<br>PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel<br>PROCESSOR_LEVEL=6<br>PROCESSOR_REVISION=3c03<br>ProgramData=C:\ProgramData<br>ProgramFiles=C:\Program Files (x86)<br>ProgramFiles(x86)=C:\Program Files (x86)<br>ProgramW6432=C:\Program Files<br>PSModulePath=C:\Users\alpha\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules\<br>PUBLIC=C:\Users\Public<br>SESSIONNAME=Console<br>SystemDrive=C:<br>SystemRoot=C:\Windows<br>TEMP=C:\Users\alpha\AppData\Local\Temp<br>TMP=C:\Users\alpha\AppData\Local\Temp<br>USERDOMAIN=DELL<br>USERDOMAIN_ROAMINGPROFILE=DELL<br>USERNAME=alpha<br>USERPROFILE=C:\Users\alpha<br>VS140COMNTOOLS=D:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\<br>windir=C:\Windows  </p>
+</blockquote>
+<h3 id="是否该使用三个参数的main函数"><a href="#是否该使用三个参数的main函数" class="headerlink" title="是否该使用三个参数的main函数"></a>是否该使用三个参数的main函数</h3><p>先说结论：应该尽量避免使用</p>
+<p>有一篇<a href="http://www2.cs.uidaho.edu/~krings/CS270/Notes.S10/270-F10-20.pdf" target="_blank" rel="external">environ</a> 的文章把原因说的比较清楚：</p>
+<blockquote>
+<p>Because ISO C specifies that the main function be written<br>with two arguments, and because this third argument provides<br>no benefit over the global variable environ, POSIX.1 specifies<br>that environ should be used instead of the (possible) third<br>argument. Access to specific environment variables is<br>normally through the getenv and putenv functions instead of<br>through the environ variable. But to go through the entire<br>environment, the environ pointer must be used</p>
+</blockquote>
+<p>ISO C/ISO C++ ,POSIX 标准都不支持main 三个参数的定义形式，<strong>VC 和GNU编译器都扩展了main 函数的定义</strong>，所以目前可以这样使用。<br>如果要编写更加可移植的程序，应该使用全局环境变量environ 来代替envp的作用，如果要访问特定的环境变量，应该使用getenv 和putenv 函数</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;stdlib.h&gt;
+
+extern char** environ;
+
+int main(int agrc,char * argv[])
+{
+
+    std::cout &lt;&lt;&quot;Test the envp parameter of main function&quot;&lt;&lt;std::endl;
+    std::cout &lt;&lt; &quot;environment paramter of system: &quot;&lt;&lt;std::endl;
+
+    char ** env = environ;
+    while(*env)
+    {
+        std::cout&lt;&lt;*env&lt;&lt;std::endl;
+    }
+    return 0;
+
+}
+</code></pre><p>运行效果与使用envp参数一样。</p>
+<p>getenv 和putenv 也是定义在stdlib.h 中，函数原型如下：   </p>
+<blockquote>
+<p>int putenv(char <em>str);<br>int setenv(const char </em>name, const char *value, int rewrite);</p>
+</blockquote>
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/23/Python爬虫介绍/" itemprop="url">
-                  爬虫基础--大数据时代的生产工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-23T22:48:33+08:00" content="2016-05-23">
-              2016-05-23
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/23/Python爬虫介绍/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/23/Python爬虫介绍/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/23/Python爬虫介绍/" class="leancloud_visitors" data-flag-title="爬虫基础--大数据时代的生产工具">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
+            <a href="/tags/C/" rel="tag">#C++</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          概述说起‘爬虫’，大家第一映像是这是个很酷的东西，听起来很厉害的样子。一般人对爬虫的理解就是这样了，不会对爬虫有一些深入的思考。   
-
-我眼中爬虫的意义：爬虫是我们在信息化社会中获取信息最有效的工具.  
-
-大数据的时代已经来临，基于大数据的数据挖掘，个性化推荐等领域都如火如荼。爬虫是个人获取大数
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/23/Python爬虫介绍/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/23/Python爬虫介绍/" rel="next" title="爬虫基础--大数据时代的生产工具">
+                <i class="fa fa-chevron-left"></i> 爬虫基础--大数据时代的生产工具
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/18/换位思考，情绪管理以及从尽可能多的角度看问题/" itemprop="url">
-                  换位思考，情绪管理以及多角度看问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T23:07:36+08:00" content="2016-04-18">
-              2016-04-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/自我管理/" itemprop="url" rel="index">
-                    <span itemprop="name">自我管理</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/18/换位思考，情绪管理以及从尽可能多的角度看问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/换位思考，情绪管理以及从尽可能多的角度看问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/18/换位思考，情绪管理以及从尽可能多的角度看问题/" class="leancloud_visitors" data-flag-title="换位思考，情绪管理以及多角度看问题">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          最近新成立的产品线举行TOP攻城狮颁奖大会，在公司内部倡导工程师文化，同时沟通澄清公司组织切换成立新产品线的考量以及对CCN的定位与期待。P&amp;S总裁，CCN产品线总裁都作了分享，收获比较大，这里整理分享几点自己印象最深刻的。
-1. 换位思考换位思考一直是人际关系中核心，同时也是人迈向成熟必不
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/18/换位思考，情绪管理以及从尽可能多的角度看问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/25/一些迷茫与思考/" itemprop="url">
-                  人为什么活着---迷茫与思考
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-25T22:52:45+08:00" content="2016-03-25">
-              2016-03-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/25/一些迷茫与思考/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/一些迷茫与思考/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/25/一些迷茫与思考/" class="leancloud_visitors" data-flag-title="人为什么活着---迷茫与思考">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          迷茫最近会有一些间隔性(几个月一次）的迷茫，迷茫人生到底应该怎么样子度过，常常是一整天的工作（经常态)或者是一整天游戏之后会觉得自己目前在做的事情一点意义也没有。 据说人贤者时间也容易思考类似的问题，不过还没有经历过。 这个时候总是很容易从更大的时间维度或者更大的空间维度审视自己的生活。 在时间层面
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/25/一些迷茫与思考/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
       
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/23/TinySTL设计与实现/" itemprop="url">
-                  TinySTL设计与实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-23T23:38:55+08:00" content="2016-03-23">
-              2016-03-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/23/TinySTL设计与实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/23/TinySTL设计与实现/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/23/TinySTL设计与实现/" class="leancloud_visitors" data-flag-title="TinySTL设计与实现">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          概述学习和理解template 和STL 的最好方式就是自己用template 造一个STL(俗称造轮子)，然后不断对比自己版本的STL与标准版本的STL(sgi STL 或者其它版本），不断重构自己的版本，使自己的版本达到或者超过标准库版本。
-计划
-实现Containers Library （中的
-          ...
-
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/23/TinySTL设计与实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -867,6 +457,14 @@ int main(void)int main(int argc,char * argv[])
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/16/main函数的第三个参数envp/"
+           data-title="main函数的第三个参数envp" data-url="http://yoursite.com/2016/06/16/main函数的第三个参数envp/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -886,8 +484,17 @@ int main(void)int main(int argc,char * argv[])
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -1003,6 +610,23 @@ int main(void)int main(int argc,char * argv[])
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#main函数两种常见形式"><span class="nav-number">1.</span> <span class="nav-text">main函数两种常见形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main的第三种形式"><span class="nav-number">2.</span> <span class="nav-text">main的第三种形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#是否该使用三个参数的main函数"><span class="nav-number">3.</span> <span class="nav-text">是否该使用三个参数的main函数</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -1083,6 +707,167 @@ int main(void)int main(int argc,char * argv[])
 
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 

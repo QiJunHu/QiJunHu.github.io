@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-29T15:26:13.913Z</updated>
+  <updated>2016-06-16T16:10:22.910Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,94 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>main函数的第三个参数envp</title>
+    <link href="http://yoursite.com/2016/06/16/main%E5%87%BD%E6%95%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0envp/"/>
+    <id>http://yoursite.com/2016/06/16/main函数的第三个参数envp/</id>
+    <published>2016-06-16T15:32:13.000Z</published>
+    <updated>2016-06-16T16:10:22.910Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;main函数两种常见形式&quot;&gt;&lt;a href=&quot;#main函数两种常见形式&quot; class=&quot;headerlink&quot; title=&quot;main函数两种常见形式&quot;&gt;&lt;/a&gt;main函数两种常见形式&lt;/h3&gt;&lt;p&gt;在C/C++ 程序中， 操作系统通过main函数来调用程序，main函数是从程序的入口。常见的main 函数定义有如下两种方式：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;int main(void)&lt;br&gt;int main(int argc,char * argv[])&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第一种方式main 不接受参数，第二种方式可以在通过shell调用程序时给main 函数传入参数,argc 表示参数的个数，argv 为参数的内容&lt;/p&gt;
+&lt;p&gt;举例说明，  main 函数以第二种方式定义， 程序名为test,在shell (bash for linux ,powershell for windows)中运行该程序：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;test  p&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;则argc = 2 , 两个参数， 其中程序名固定为第一个参数，在本例中 argv[0] = test , argv[1] = p&lt;/p&gt;
+&lt;p&gt;bash 中各种命令不同的参数不同的效果可以通过这种机制实现&lt;/p&gt;
+&lt;h3 id=&quot;main的第三种形式&quot;&gt;&lt;a href=&quot;#main的第三种形式&quot; class=&quot;headerlink&quot; title=&quot;main的第三种形式&quot;&gt;&lt;/a&gt;main的第三种形式&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;int main(int argc,char　&lt;em&gt; argv[],char &lt;/em&gt; envp[])&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第三个参数用来在程序运行时获取系统的环境变量，操作系统运行程序时通过envp 参数将系统环境变量传递给程序&lt;/p&gt;
+&lt;p&gt;测试代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+
+
+int main(int agrc,char * argv[],char * envp[])
+{
+
+    std::cout &amp;lt;&amp;lt;&amp;quot;Test the envp parameter of main function&amp;quot;&amp;lt;&amp;lt;std::endl;
+    std::cout &amp;lt;&amp;lt; &amp;quot;environment paramter of system: &amp;quot;&amp;lt;&amp;lt;std::endl;
+
+    for(int i  = 0 ;  envp[i] ; ++i)
+    {
+        std::cout&amp;lt;&amp;lt;envp[i]&amp;lt;&amp;lt;std::endl;
+    }
+    return 0;
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;程序运行后将系统所有环境变量打印出来了(如下给出的是windows上测试结果，linux 上环境变量与windows上不同)：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Test the envp parameter of main function&lt;br&gt;environment paramter of system:&lt;br&gt;ALLUSERSPROFILE=C:\ProgramData&lt;br&gt;APPDATA=C:\Users\alpha\AppData\Roaming&lt;br&gt;asl.log=Destination=file&lt;br&gt;CommonProgramFiles=C:\Program Files (x86)\Common Files&lt;br&gt;CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files&lt;br&gt;CommonProgramW6432=C:\Program Files\Common Files&lt;br&gt;COMPUTERNAME=DELL&lt;br&gt;ComSpec=C:\Windows\system32\cmd.exe&lt;br&gt;FP_NO_HOST_CHECK=NO&lt;br&gt;GOPATH=D:\projects\go_project&lt;br&gt;GOROOT=D:\Go\&lt;br&gt;HOMEDRIVE=C:&lt;br&gt;HOMEPATH=\Users\alpha&lt;br&gt;LOCALAPPDATA=C:\Users\alpha\AppData\Local&lt;br&gt;LOGONSERVER=\MicrosoftAccount&lt;br&gt;NUMBER_OF_PROCESSORS=4&lt;br&gt;OS=Windows_NT&lt;br&gt;Path=D:\Python27\;D:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32\config\systemprofile.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;D:\Go\bin;D:\Program Files\nodejs\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\alpha\AppData\Roaming\npm;E:\Program Files\phantomjs-2.1.1-windows\phantomjs-2.1.1-windows\bin&lt;br&gt;PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL&lt;br&gt;PROCESSOR_ARCHITECTURE=x86&lt;br&gt;PROCESSOR_ARCHITEW6432=AMD64&lt;br&gt;PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel&lt;br&gt;PROCESSOR_LEVEL=6&lt;br&gt;PROCESSOR_REVISION=3c03&lt;br&gt;ProgramData=C:\ProgramData&lt;br&gt;ProgramFiles=C:\Program Files (x86)&lt;br&gt;ProgramFiles(x86)=C:\Program Files (x86)&lt;br&gt;ProgramW6432=C:\Program Files&lt;br&gt;PSModulePath=C:\Users\alpha\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules\&lt;br&gt;PUBLIC=C:\Users\Public&lt;br&gt;SESSIONNAME=Console&lt;br&gt;SystemDrive=C:&lt;br&gt;SystemRoot=C:\Windows&lt;br&gt;TEMP=C:\Users\alpha\AppData\Local\Temp&lt;br&gt;TMP=C:\Users\alpha\AppData\Local\Temp&lt;br&gt;USERDOMAIN=DELL&lt;br&gt;USERDOMAIN_ROAMINGPROFILE=DELL&lt;br&gt;USERNAME=alpha&lt;br&gt;USERPROFILE=C:\Users\alpha&lt;br&gt;VS140COMNTOOLS=D:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\&lt;br&gt;windir=C:\Windows  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;是否该使用三个参数的main函数&quot;&gt;&lt;a href=&quot;#是否该使用三个参数的main函数&quot; class=&quot;headerlink&quot; title=&quot;是否该使用三个参数的main函数&quot;&gt;&lt;/a&gt;是否该使用三个参数的main函数&lt;/h3&gt;&lt;p&gt;先说结论：应该尽量避免使用&lt;/p&gt;
+&lt;p&gt;有一篇&lt;a href=&quot;http://www2.cs.uidaho.edu/~krings/CS270/Notes.S10/270-F10-20.pdf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;environ&lt;/a&gt; 的文章把原因说的比较清楚：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Because ISO C specifies that the main function be written&lt;br&gt;with two arguments, and because this third argument provides&lt;br&gt;no benefit over the global variable environ, POSIX.1 specifies&lt;br&gt;that environ should be used instead of the (possible) third&lt;br&gt;argument. Access to specific environment variables is&lt;br&gt;normally through the getenv and putenv functions instead of&lt;br&gt;through the environ variable. But to go through the entire&lt;br&gt;environment, the environ pointer must be used&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ISO C/ISO C++ ,POSIX 标准都不支持main 三个参数的定义形式，&lt;strong&gt;VC 和GNU编译器都扩展了main 函数的定义&lt;/strong&gt;，所以目前可以这样使用。&lt;br&gt;如果要编写更加可移植的程序，应该使用全局环境变量environ 来代替envp的作用，如果要访问特定的环境变量，应该使用getenv 和putenv 函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;iostream&amp;gt;
+#include&amp;lt;stdlib.h&amp;gt;
+
+extern char** environ;
+
+int main(int agrc,char * argv[])
+{
+
+    std::cout &amp;lt;&amp;lt;&amp;quot;Test the envp parameter of main function&amp;quot;&amp;lt;&amp;lt;std::endl;
+    std::cout &amp;lt;&amp;lt; &amp;quot;environment paramter of system: &amp;quot;&amp;lt;&amp;lt;std::endl;
+
+    char ** env = environ;
+    while(*env)
+    {
+        std::cout&amp;lt;&amp;lt;*env&amp;lt;&amp;lt;std::endl;
+    }
+    return 0;
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;运行效果与使用envp参数一样。&lt;/p&gt;
+&lt;p&gt;getenv 和putenv 也是定义在stdlib.h 中，函数原型如下：   &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;int putenv(char &lt;em&gt;str);&lt;br&gt;int setenv(const char &lt;/em&gt;name, const char *value, int rewrite);&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;main函数两种常见形式&quot;&gt;&lt;a href=&quot;#main函数两种常见形式&quot; class=&quot;headerlink&quot; title=&quot;main函数两种常见形式&quot;&gt;&lt;/a&gt;main函数两种常见形式&lt;/h3&gt;&lt;p&gt;在C/C++ 程序中， 操作系统通过main函数来调用程序，
+    
+    </summary>
+    
+      <category term="C++" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>爬虫基础--大数据时代的生产工具</title>
