@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-16T16:10:22.910Z</updated>
+  <updated>2016-06-26T03:51:19.931Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>时间管理，轻重缓急</title>
+    <link href="http://yoursite.com/2016/06/26/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86%EF%BC%8C%E8%BD%BB%E9%87%8D%E7%BC%93%E6%80%A5/"/>
+    <id>http://yoursite.com/2016/06/26/时间管理，轻重缓急/</id>
+    <published>2016-06-26T02:12:37.000Z</published>
+    <updated>2016-06-26T03:51:19.931Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;时间管理是现代职场人士的必备技能。 现代人如何在快节奏的职场中做好工作？   如何平衡好工作和个人生活，家庭生活的关系？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;事分轻重缓急， 轻重指的是事情的重要性这一维度，  缓急指的是事情的迫切性这一个维度&lt;br&gt;尽量多的做重要不紧急的事情，  这个是时间管理的核心&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;象限分析&quot;&gt;&lt;a href=&quot;#象限分析&quot; class=&quot;headerlink&quot; title=&quot;象限分析&quot;&gt;&lt;/a&gt;象限分析&lt;/h3&gt;&lt;p&gt;从轻重，缓急两个维度来分析， 就可以画出如下象限图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/QiJunHu/TinySTL/master/src/blog062601.jpg&quot; alt=&quot;时间管理四象限&quot;&gt;&lt;/p&gt;
+&lt;p&gt;救火属于重要紧急的事情，  属于第一象限；&lt;br&gt;防火属于重要不紧急的事情，属于第二象限；&lt;br&gt;刷微信，微博等一般属于不紧急也不重要的事情，属于第三象限；&lt;br&gt;一些无聊的会议等属于紧急但不重要的事情，属于第四现象；&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;时间管理的核心就是尽量做更多重要不紧急的事情&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;###哪些事情属于重要不紧急&lt;/p&gt;
+&lt;p&gt;运动，锻炼身体&lt;br&gt;阅读，看书，学习&lt;br&gt;思考，规划&lt;br&gt;人际关系，包括投入维持亲密关系&lt;/p&gt;
+&lt;p&gt;这些事情应该是生活中优先级最高的事情， 尽量优先做这些事情！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;时间管理是现代职场人士的必备技能。 现代人如何在快节奏的职场中做好工作？   如何平衡好工作和个人生活，家庭生活的关系？&lt;/p&gt;
+&lt;bloc
+    
+    </summary>
+    
+      <category term="自我管理" scheme="http://yoursite.com/categories/%E8%87%AA%E6%88%91%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="时间管理" scheme="http://yoursite.com/tags/%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>main函数的第三个参数envp</title>
