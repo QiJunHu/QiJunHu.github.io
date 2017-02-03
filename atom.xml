@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-31T04:41:56.342Z</updated>
+  <updated>2017-02-03T13:44:41.918Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Targets in 2017</title>
+    <link href="http://yoursite.com/2017/02/03/Targets-in-2017/"/>
+    <id>http://yoursite.com/2017/02/03/Targets-in-2017/</id>
+    <published>2017-02-03T13:25:05.000Z</published>
+    <updated>2017-02-03T13:44:41.918Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Try balance work with life…..eg a new work  that has more time for personal affairs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Apply to a master degree in CS,  based on # 1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Strengthen body, eg run 15 kms per week&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Creative thinking and learning , eg answer one problem in ZHIHU or Quora per week seriously&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Be more humorous and positive thinking ,eg read mord , see more and laugh more &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Try balance work with life…..eg a new work  that has more time for personal affairs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Apply to a master degree in
+    
+    </summary>
+    
+      <category term="自我管理" scheme="http://yoursite.com/categories/%E8%87%AA%E6%88%91%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="target" scheme="http://yoursite.com/tags/target/"/>
+    
+  </entry>
   
   <entry>
     <title>工作总结（201407-201607）</title>
