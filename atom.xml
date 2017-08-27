@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-04T12:55:14.171Z</updated>
+  <updated>2017-08-27T14:20:35.239Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/03/Targets-in-2017/"/>
     <id>http://yoursite.com/2017/02/03/Targets-in-2017/</id>
     <published>2017-02-03T13:25:05.000Z</published>
-    <updated>2017-02-04T12:55:14.171Z</updated>
+    <updated>2017-08-27T14:20:35.239Z</updated>
     
     <content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Try to balance work with life…..eg a new work  that has more time for personal affairs&lt;/p&gt;
@@ -28,6 +28,7 @@
 &lt;li&gt;&lt;p&gt;Apply for a master degree in CS,  based on # 1&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Strengthen body, eg run 15 kms per week&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Creative thinking and learning , eg answer one problem in ZHIHU or Quora per week seriously&lt;/p&gt;
 &lt;/li&gt;
@@ -41,7 +42,9 @@
       &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Try to balance work with life…..eg a new work  that has more time for personal affairs&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Apply for a master degre
+&lt;li&gt;&lt;p&gt;Apply for a master degree in CS,  based on # 1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Strengthen body, eg run 15 kms per week&lt;/p&gt;
     
     </summary>
     
