@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>他来了又走了</title>
-  <subtitle>风记录的痕迹</subtitle>
+  <title>与世而移</title>
+  <subtitle>veni，vidi，vici!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -9,7 +9,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Jethro Hu</name>
+    <name>qijunhu</name>
     
   </author>
   
